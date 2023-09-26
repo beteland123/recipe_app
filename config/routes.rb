@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root "foods#index"
   resources :recipe_foods, only: [ :new, :create, :edit, :update, :destroy ]
   resources :foods, only: [ :index, :new, :create, :destroy ]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
