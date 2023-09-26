@@ -1,33 +1,34 @@
 class RecipesController < ApplicationController
-  def index
-    @recipes = Recipe.all
+#  before_action :authenticate_user!, except: [:public_recipes_list, :recipe_details]
+  before_action :set_recipe, only: [:recipe_details, :toggle_public]
+
+  def public_recipes_list
+    @recipes = Recipe.where(public: true).order(created_at: :desc)
   end
 
-  def show
-    @recipe = Recipe.find_by(id: params[:id])
+  def recipe_details
+    if @recipe.public || @recipe.user == current_user
+      @recipe_foods = @recipe.foods
+    else
+      flash[:alert] = "This recipe is not public, and you don't have permission to view it."
+      redirect_to public_recipes_list_path
+    end
   end
 
-  def new; end
+  def toggle_public
+    if @recipe.user == current_user
+      @recipe.update(public: !@recipe.public)
+      flash[:notice] = @recipe.public ? 'Recipe is now public.' : 'Recipe is now private.'
+    else
+      flash[:alert] = "You don't have permission to modify this recipe."
+    end
 
-  def create
-    @recipe = Recipe.new
-    @recipe.name = params[:name]
-    @recipe.ingredients = params[:ingredients]
-    @recipe.cook_time = params[:cook_time]
-    @recipe.save
-    redirect_to recipe_path(@recipe)
+    redirect_to recipe_details_path(@recipe)
   end
 
-  def edit
-    @recipe = Recipe.find_by(id: params[:id])
-  end
+  private
 
-  def update
-    @recipe = Recipe.find_by(id: params[:id])
-    @recipe.name = params[:name]
-    @recipe.ingredients = params[:ingredients]
-    @recipe.cook_time = params[:cook_time]
-    @recipe.save
-    redirect_to recipe_path(@recipe)
+  def set_recipe
+    @recipe = Recipe.find(params[:id])
   end
 end
