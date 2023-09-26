@@ -1,8 +1,14 @@
 Rails.application.routes.draw do
   devise_for :users
-  root "recipe#index"
+  devise_scope :user do
+    get "/custom_sign_out" => "devise/sessions#destroy", as: :custom_destroy_user_session
+  end
+  root "foods#index"
   resources :recipe_foods, only: [ :new, :create, :edit, :update, :destroy ]
   resources :foods, only: [ :index, :new, :create, :destroy ]
+  resources :users
+  resources :recipes
+  
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
