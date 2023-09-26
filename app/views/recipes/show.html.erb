@@ -1,2 +1,22 @@
-<h1>List of recipe</h1>
-<p>Placeholder: Here is a list of recipe for a given user.</p>
+<h1><%= @recipe.name %></h1>
+<%= link_to 'Back', recipes_path %>
+
+<% if user_signed_in? && current_user == @recipe.user %>
+  <%= link_to 'Toggle Public', toggle_public_recipe_path(@recipe), method: :post %>
+<% end %>
+
+<p><strong>Preparation Time:</strong> <%= @recipe.preparation_time %> minutes</p>
+<p><strong>Cooking Time:</strong> <%= @recipe.cooking_time %> minutes</p>
+<p><strong>Description:</strong> <%= @recipe.description %></p>
+
+<% if user_signed_in? && current_user == @recipe.user %>
+  <h2>Add Food</h2>
+  <%= form_for(@food) do |f| %>
+    <%= f.hidden_field :recipe_id, value: @recipe.id %>
+    <%= f.label :name, 'Food Name' %>
+    <%= f.text_field :name %>
+    <%= f.label :quantity %>
+    <%= f.number_field :quantity %>
+    <%= f.submit 'Add Food' %>
+  <% end %>
+<% end %>

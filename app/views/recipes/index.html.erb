@@ -1,2 +1,8 @@
-<h1>List of recipe</h1>
-<p>Placeholder: Here is a list of recipe for a given user.</p>
+<h1>List of Recipes</h1>
+<% @recipes.each do |recipe| %>
+  <div class="recipe">
+    <h2><%= link_to recipe.name, recipe_path(recipe) %></h2>
+    <%= link_to 'Edit', edit_recipe_path(recipe) %>
+    <%= link_to 'Delete', recipe, method: :delete, data: { confirm: 'Are you sure?' } if current_user == recipe.user %>
+  </div>
+<% end %>
