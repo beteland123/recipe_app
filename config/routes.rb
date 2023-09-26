@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
 resources :users
 resources :recipes do
-    member do
-      post 'toggle_public'
-    end
+    patch 'toggle_public', on: :member
   end
-  get 'public_recipes', to: 'recipes#public_index', as: :public_recipes
 end

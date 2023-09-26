@@ -1,6 +1,8 @@
 <h1>Public Recipes</h1>
-<% @recipes.each do |recipe| %>
-  <div class="recipe">
-    <h2><%= link_to recipe.name, recipe_path(recipe) %></h2>
-  </div>
-<% end %>
+<ul>
+  <% @public_recipes.each do |recipe| %>
+    <li>
+      <%= link_to recipe.name, recipe_path(recipe) %>
+    </li>
+  <% end %>
+</ul>

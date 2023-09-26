@@ -1,22 +1,22 @@
+<!-- app/views/recipes/show.html.erb -->
 <h1><%= @recipe.name %></h1>
-<%= link_to 'Back', recipes_path %>
+<p>Description: <%= @recipe.description %></p>
+<p>Preparation Time: <%= @recipe.preparation_time %> minutes</p>
+<p>Cooking Time: <%= @recipe.cooking_time %> minutes</p>
 
-<% if user_signed_in? && current_user == @recipe.user %>
-  <%= link_to 'Toggle Public', toggle_public_recipe_path(@recipe), method: :post %>
-<% end %>
+<!-- Toggle Public/Private Button -->
+<%= link_to "Toggle Public/Private", toggle_public_recipe_path(@recipe), method: :patch, class: 'btn btn-primary' %>
 
-<p><strong>Preparation Time:</strong> <%= @recipe.preparation_time %> minutes</p>
-<p><strong>Cooking Time:</strong> <%= @recipe.cooking_time %> minutes</p>
-<p><strong>Description:</strong> <%= @recipe.description %></p>
+<% if @recipe.public || current_user == @recipe.user %>
+  <!-- Recipe Details -->
 
-<% if user_signed_in? && current_user == @recipe.user %>
-  <h2>Add Food</h2>
-  <%= form_for(@food) do |f| %>
-    <%= f.hidden_field :recipe_id, value: @recipe.id %>
-    <%= f.label :name, 'Food Name' %>
-    <%= f.text_field :name %>
-    <%= f.label :quantity %>
-    <%= f.number_field :quantity %>
-    <%= f.submit 'Add Food' %>
+  <!-- Add Food Form -->
+  <%= form_for([@recipe, @recipe.foods.build]) do |f| %>
+    <div class="field">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
+    <!-- Add more fields as needed for food items -->
+    <%= f.submit "Add Food", class: 'btn btn-success' %>
   <% end %>
 <% end %>
