@@ -28,6 +28,28 @@ class FoodsController < ApplicationController
     redirect_to foods_url
   end
 
+  def shopping_list
+    @recipes = Recipe.where(user: current_user)
+    @recipe_foods = RecipeFood.where(recipe_id: @recipe.id)
+    @general_food_list = Food.where(user: current_user)
+    
+
+    @missing_food_items = []
+    @recipes.each do |recipe|
+        @recipe_foods.each do |recipe_food|
+          general_food = @general_food_list.find_by(id: recipe_food.food_id)
+          if general_food.nil? || general_food.quantity < recipe_food.quantity
+            @missing_food_items << {
+              food_name: recipe_food.food.name,
+              quantity_needed: recipe_food.quantity,
+              price: recipe_food.food.price
+            }
+          end
+        end
+      end
+
+  end
+
   private
 
   def food_params
