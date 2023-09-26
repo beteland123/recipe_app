@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-#  before_action :authenticate_user!
+  before_action :authenticate_user!
 
   def recipes_list
     @user = current_user
