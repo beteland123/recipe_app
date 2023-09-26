@@ -1,6 +1,6 @@
 class RecipesController < ApplicationController
-#  before_action :authenticate_user!, except: [:public_recipes_list, :recipe_details]
-  before_action :set_recipe, only: [:recipe_details, :toggle_public]
+  #  before_action :authenticate_user!, except: [:public_recipes_list, :recipe_details]
+  before_action :set_recipe, only: %i[recipe_details toggle_public]
 
   def public_recipes_list
     @recipes = Recipe.where(public: true).order(created_at: :desc)
