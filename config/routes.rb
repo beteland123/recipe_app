@@ -1,30 +1,15 @@
 Rails.application.routes.draw do
   devise_for :users
-  
+  root to: 'recipes#index' # Set the recipe list as the homepage
+
   resources :users, only: [] do
-    get 'recipes_list', on: :collection
-    delete 'delete_recipe/:id', to: 'users#delete_recipe', on: :member, as: :delete_recipe
+    resources :recipes, only: [:index] # User's recipe list
   end
 
-  resources :recipes, only: [] do
-    get 'public_recipes_list', on: :collection
-    get 'recipe_details/:id', to: 'recipes#recipe_details', on: :member, as: :recipe_details
-    post 'toggle_public/:id', to: 'recipes#toggle_public', on: :member, as: :toggle_public
+  resources :recipes, except: [:update] do
+    member do
+      patch 'toggle_public' # Route for toggling recipe public/private
+      get 'public_recipes' # Route for displaying public recipes
+    end
   end
-
-  root 'recipes#recipes_details'
-
-  devise_scope :user do
-    get "/custom_sign_out" => "devise/sessions#destroy", as: :custom_destroy_user_session
-  end
-#  root "foods#index"
-  resources :recipe_foods, only: [ :new, :create, :edit, :update, :destroy ]
-  resources :foods, only: [ :index, :new, :create, :destroy ]
-  resources :users
-  resources :recipes
-  
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
 end
