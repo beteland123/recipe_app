@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :foods, only: [ :index, :new, :create, :destroy ]
   resources :users
   resources :recipes
+  get '/general_shopping_list', to: 'foods#general_shopping_list', as: 'general_shopping_list'
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
