@@ -28,27 +28,33 @@ class FoodsController < ApplicationController
     redirect_to foods_url
   end
 
-  def shopping_list
+  def general_shopping_list
     @recipes = Recipe.where(user: current_user)
-    @recipe_foods = RecipeFood.where(recipe_id: @recipe.id)
     @general_food_list = Food.where(user: current_user)
-    
-
     @missing_food_items = []
+    total_food_items = 0
+    total_price = 0
+  
     @recipes.each do |recipe|
-        @recipe_foods.each do |recipe_food|
-          general_food = @general_food_list.find_by(id: recipe_food.food_id)
-          if general_food.nil? || general_food.quantity < recipe_food.quantity
-            @missing_food_items << {
-              food_name: recipe_food.food.name,
-              quantity_needed: recipe_food.quantity,
-              price: recipe_food.food.price
-            }
-          end
+      recipe.recipe_foods.each do |recipe_food|
+        general_food = @general_food_list.find_by(id: recipe_food.food_id)
+  
+        if general_food.nil? || general_food.quantity < recipe_food.quantity
+          @missing_food_items << {
+            food_name: recipe_food.food.name,
+            quantity_needed: recipe_food.quantity,
+            price: recipe_food.food.price
+          }
+          total_food_items += recipe_food.quantity
+          total_price += (recipe_food.food.price * recipe_food.quantity)
         end
       end
-
+    end
+  
+    @total_food_items = total_food_items
+    @total_price = total_price
   end
+  
 
   private
 

@@ -12,6 +12,7 @@
       <% end %>
 </div>
 <%= link_to 'Add Food', 'foods/new', class: "add-button"%>
+<% if @foods.any? %>
 <table>
   <thead>
     <tr>
@@ -32,3 +33,6 @@
     </tr>
   </tbody>
 </table>
+<% else %>
+   <p>There is no food you have.</p>
+<% end %>
