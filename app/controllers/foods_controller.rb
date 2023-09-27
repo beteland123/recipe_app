@@ -34,27 +34,26 @@ class FoodsController < ApplicationController
     @missing_food_items = []
     total_food_items = 0
     total_price = 0
-  
+
     @recipes.each do |recipe|
       recipe.recipe_foods.each do |recipe_food|
         general_food = @general_food_list.find_by(id: recipe_food.food_id)
-  
-        if general_food.nil? || general_food.quantity < recipe_food.quantity
-          @missing_food_items << {
-            food_name: recipe_food.food.name,
-            quantity_needed: recipe_food.quantity,
-            price: recipe_food.food.price
-          }
-          total_food_items += recipe_food.quantity
-          total_price += (recipe_food.food.price * recipe_food.quantity)
-        end
+
+        next unless general_food.nil? || general_food.quantity < recipe_food.quantity
+
+        @missing_food_items << {
+          food_name: recipe_food.food.name,
+          quantity_needed: recipe_food.quantity,
+          price: recipe_food.food.price
+        }
+        total_food_items += recipe_food.quantity
+        total_price += (recipe_food.food.price * recipe_food.quantity)
       end
     end
-  
+
     @total_food_items = total_food_items
     @total_price = total_price
   end
-  
 
   private
 
