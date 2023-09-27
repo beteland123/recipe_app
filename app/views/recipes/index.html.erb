@@ -3,7 +3,8 @@
 <% @recipes.each do |recipe| %>
   <div class="recipe">
     <h2><%= link_to recipe.name, recipe %></h2>
-    <%= link_to 'Delete', recipe, method: :delete, data: { confirm: 'Are you sure?' } if current_user == recipe.user %>
+	<h2><%= recipe.description %></h2>
+    <%= link_to 'Delete', recipe_url(recipe.id), method: :delete, data: { confirm: 'Are you sure?' } if current_user == recipe.user %>
   </div>
 <% end %>
 

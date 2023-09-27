@@ -1,15 +1,15 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: 'recipes#index' # Set the recipe list as the homepage
+  root to: 'recipes#index'
 
   resources :users, only: [] do
-    resources :recipes, only: [:index] # User's recipe list
+    resources :recipes, only: [:index]
   end
 
   resources :recipes, except: [:update] do
     member do
-      patch 'toggle_public' # Route for toggling recipe public/private
-      get 'public_recipes' # Route for displaying public recipes
+      patch 'toggle_public'
+      get 'public_recipes'
     end
   end
 end

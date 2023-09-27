@@ -10,11 +10,6 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
     @recipe_foods = @recipe.recipe_foods
     @user = current_user
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @recipe }
-    end
   end
 
   def new
@@ -24,7 +19,7 @@ class RecipesController < ApplicationController
   def create
     @recipe = current_user.recipes.build(recipe_params)
     if @recipe.save
-      redirect_to @recipe, notice: 'Recipe was successfully created.'
+      redirect_to recipes_url, notice: 'Recipe was successfully created.'
     else
       render :new
     end
@@ -65,8 +60,8 @@ class RecipesController < ApplicationController
   end
 
   def recipe_params
-    # Define the permitted parameters for creating/updating a recipe
-  end
+	params.require(:recipe).permit(:name, :description, :preparation_time, :cooking_time, :public)
+  end  
 
   def food_params
     # Define the permitted parameters for creating food
