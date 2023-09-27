@@ -1,7 +1,6 @@
 <h1><%= @recipe.name %></h1>
 
 <% if current_user == @recipe.user || @recipe.public %>
-  <!-- Recipe details go here -->
   <%= render 'recipe_details', recipe: @recipe %>
 <% else %>
   <p>This recipe is private.</p>
@@ -9,5 +8,15 @@
 
 <% if current_user == @recipe.user %>
   <%= link_to 'Toggle Privacy', toggle_public_recipe_path(@recipe), method: :patch %>
+<% end %>
+
+<% if current_user == @recipe.user || @recipe.public %>
+  <div class="names">
+    <p>Preparation Time: <%= @recipe.preparation_time %></p>
+    <p>Cooking Time: <%= @recipe.cooking_time %></p>
+    <p>Steps go here...</p>
+  </div>
+<% end %>
+<% if current_user == @recipe.user %>
   <%= link_to 'Add Food', add_food_recipe_path(@recipe) %>
 <% end %>

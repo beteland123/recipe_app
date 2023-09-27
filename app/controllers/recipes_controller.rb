@@ -30,10 +30,15 @@ class RecipesController < ApplicationController
   end
 
   def destroy
-    @recipe = Recipe.find(params[:id])
-    @recipe.destroy
-    redirect_to recipes_url, notice: 'Recipe was successfully deleted.'
-  end
+	@recipe = Recipe.find(params[:id])
+  
+	if current_user == @recipe.user
+	  @recipe.destroy
+	  redirect_to recipes_url, notice: 'Recipe was successfully deleted.'
+	else
+	  redirect_to recipes_url, alert: 'You are not authorized to delete this recipe.'
+	end
+  end   
 
   def toggle_public
     @recipe.toggle!(:public)
