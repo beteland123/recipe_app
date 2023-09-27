@@ -1,4 +1,4 @@
-<p>index page</p>
+<h2>Food index page</h2>
 <div class='sign_in_user_bar'>
       <% unless user_signed_in? %>
         <div class="user-sign-in-link">
@@ -11,3 +11,24 @@
         </div>
       <% end %>
 </div>
+<%= link_to 'Add Food', new_user_food_path(@user), class: "add-button"%>
+<table>
+  <thead>
+    <tr>
+      <th>Food </th>
+      <th>Measurement unit</th>
+      <th>Unit price</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <% @foods.each do |food| %>
+      <td><%= food.name %></td>
+      <td><%= food.measurement_unit %></td>
+      <td><%= food.price %></td>
+      <td><%= button_to "Delete Food", user_food_path(@user, food), method: :delete, data: { confirm: "Are you sure?" } %></td>
+    <% end %>
+    </tr>
+  </tbody>
+</table>
