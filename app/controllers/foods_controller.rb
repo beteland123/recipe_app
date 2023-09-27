@@ -1,5 +1,5 @@
 class FoodsController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!
   def index
     @foods = current_user.foods
   end
@@ -14,7 +14,7 @@ class FoodsController < ApplicationController
 
     if @food.save
       flash[:success] = 'Food saved successfully'
-      redirect_to foods_url
+      redirect_to foods_path
     else
       flash.now[:error] = 'Error: Food could not be saved'
       render 'new'
