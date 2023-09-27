@@ -1,0 +1,56 @@
+<div>
+  <h1>List of Recipes</h1>
+
+  <!-- Recipe Modal -->
+  <div class="modal fade" id="recipeModal" tabindex="-1" aria-labelledby="recipeModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 id="recipeModalLabel">Add Recipe</h1>
+          <button type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <%= form_with model: @recipe, url: recipes_path do |f| %>
+            <div>
+              <%= f.label :name %>
+              <%= f.text_field :name %>
+            </div>
+            <div>
+              <%= f.label :description %>
+              <%= f.text_area :description, size: '50x10' %>
+            </div>
+            <div>
+              <%= f.label :preparation_time %>
+              <%= f.text_field :preparation_time %>
+              <em>Eg: 1 Hour</em>
+            </div>
+            <div>
+              <%= f.label :cooking_time %>
+              <%= f.text_field :cooking_time %>
+              <em>Eg: 1 Hour</em>
+            </div>
+            <div>
+              <%= f.submit "Create Recipe" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <% @recipes.each do |recipe| %>
+    <div>
+      <div>
+        <div>
+          <h3><%= recipe.name %></h3>
+          <% if can? :delete, recipe %>
+            <%= button_to "Delete", recipe_path(recipe), method: :delete %>
+          <% end %>
+        </div>
+        <p><%= recipe.description %></p>
+      </div>
+    </div>
+  <% end %>
+</div>
