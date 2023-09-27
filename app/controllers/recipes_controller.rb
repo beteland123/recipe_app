@@ -1,34 +1,40 @@
 class RecipesController < ApplicationController
-  before_action :authenticate_user!, except: %i[public_recipes_list recipe_details]
-  before_action :set_recipe, only: %i[recipe_details toggle_public]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_recipe, only: [:show, :edit, :update, :destroy]
 
-  def public_recipes_list
+  def index
     @recipes = Recipe.where(public: true).order(created_at: :desc)
   end
 
-  def recipe_details
-    if @recipe.public || @recipe.user == current_user
-      @recipe_foods = @recipe.foods
+  def show
+    @food = Food.new
+  end
+
+  def new
+    @recipe = current_user.recipes.build
+  end
+
+  def create
+    @recipe = current_user.recipes.build(recipe_params)
+    if @recipe.save
+      redirect_to @recipe, notice: 'Recipe was successfully created.'
     else
-      flash[:alert] = "This recipe is not public, and you don't have permission to view it."
-      redirect_to public_recipes_list_path
+      render :new
     end
   end
 
-  def toggle_public
-    if @recipe.user == current_user
-      @recipe.update(public: !@recipe.public)
-      flash[:notice] = @recipe.public ? 'Recipe is now public.' : 'Recipe is now private.'
-    else
-      flash[:alert] = "You don't have permission to modify this recipe."
-    end
-
-    redirect_to recipe_details_path(@recipe)
+  def destroy
+    @recipe.destroy
+    redirect_to recipes_url, notice: 'Recipe was successfully destroyed.'
   end
 
   private
 
   def set_recipe
     @recipe = Recipe.find(params[:id])
+  end
+
+  def recipe_params
+    params.require(:recipe).permit(:name, :preparation_time, :cooking_time, :description, :public)
   end
 end

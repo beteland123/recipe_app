@@ -1,22 +1,22 @@
-<h1>Recipe Details</h1>
+#<h1>Recipe Details</h1>
 
-<% if flash[:alert] %>
-  <div class="alert alert-danger"><%= flash[:alert] %></div>
-<% end %>
+#<% if flash[:alert] %>
+#  <div class="alert alert-danger"><%= flash[:alert] %></div>
+#<% end %>
 
-<h2><%= @recipe.name %></h2>
-<p>Preparation Time: <%= @recipe.preparation_time %> minutes</p>
-<p>Cooking Time: <%= @recipe.cooking_time %> minutes</p>
-<p>Description: <%= @recipe.description %></p>
-<p>Public: <%= @recipe.public ? 'Yes' : 'No' %></p>
+#<h2><%= @recipe.name %></h2>
+#<p>Preparation Time: <%= @recipe.preparation_time %> minutes</p>
+#<p>Cooking Time: <%= @recipe.cooking_time %> minutes</p>
+#<p>Description: <%= @recipe.description %></p>
+#<p>Public: <%= @recipe.public ? 'Yes' : 'No' %></p>
 
-<% if @recipe.user == current_user %>
-  <%= link_to 'Toggle Privacy', toggle_public_path(@recipe), method: :post %>
-<% end %>
+#<% if @recipe.user == current_user %>
+#  <%= link_to 'Toggle Privacy', toggle_public_path(@recipe), method: :post %>
+#<% end %>
 
-<% if @recipe.public || @recipe.user == current_user %>
-  <h3>Ingredients</h3>
-  <% @recipe_foods.each do |recipe_food| %>
-    <p><%= recipe_food.food.name %> - <%= recipe_food.quantity %></p>
-  <% end %>
-<% end %>
+#<% if @recipe.public || @recipe.user == current_user %>
+#  <h3>Ingredients</h3>
+#  <% @recipe_foods.each do |recipe_food| %>
+#    <p><%= recipe_food.food.name %> - <%= recipe_food.quantity %></p>
+#  <% end %>
+#<% end %>
