@@ -12,13 +12,12 @@
  *
  *= require_tree .
  *= require_self
-
- body {
-    background-image: url('https://img.freepik.com/premium-photo/cooking-ingredient-white-table-background_798854-433.jpg?size=626&ext=jpg&ga=GA1.1.1216120637.1695808448&semt=ais');
-    background-repeat: no-repeat;
-    background-size: cover;
- }
  https://www.freepik.com/free-photos-vectors/recipe-ingredients
  https://img.freepik.com/premium-photo/various-fresh-vegetables-herbs-healthy-eating-concept_51524-4701.jpg?size=626&ext=jpg&ga=GA1.1.1216120637.1695808448&semt=ais
  background-image: url('https://img.freepik.com/free-photo/top-view-fresh-vegetables-various-spices-small-bowls-wooden-spoons-table-free-space_140725-147473.jpg?size=626&ext=jpg&ga=GA1.1.1216120637.1695808448&semt=ais');
  */
+ body {
+   /* background-image: url('https://img.freepik.com/premium-photo/cooking-ingredient-white-table-background_798854-433.jpg?size=626&ext=jpg&ga=GA1.1.1216120637.1695808448&semt=ais');
+    background-repeat: no-repeat;
+    background-size: cover;*/
+}
