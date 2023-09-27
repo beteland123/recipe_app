@@ -7,7 +7,14 @@ class RecipesController < ApplicationController
   end
 
   def show
-    # Display recipe details
+    @recipe = Recipe.find(params[:id])
+    @recipe_foods = @recipe.recipe_foods
+    @user = current_user
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @recipe }
+    end
   end
 
   def new
