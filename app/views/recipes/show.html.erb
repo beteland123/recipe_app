@@ -17,6 +17,7 @@
     <p>Steps go here...</p>
   </div>
 <% end %>
+
 <% if current_user == @recipe.user %>
-  <%= link_to 'Add Food', add_food_recipe_path(@recipe) %>
+  <%= link_to 'Add New Step', new_recipe_step_path(@recipe), class: 'btn btn-primary' %>
 <% end %>

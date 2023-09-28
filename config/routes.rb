@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'recipe_steps/new'
+  get 'recipe_steps/create'
   devise_for :users
   root to: 'recipes#index'
 
@@ -10,6 +12,8 @@ Rails.application.routes.draw do
     member do
       patch 'toggle_public'
       get 'public_recipes'
+      get 'new_step', to: 'recipe_steps#new'
+      post 'create_step', to: 'recipe_steps#create'
     end
   end
 end

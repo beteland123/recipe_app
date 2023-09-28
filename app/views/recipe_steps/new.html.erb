@@ -1,0 +1,11 @@
+<%= form_with(model: [@recipe, @recipe_step], url: recipe_create_step_path(@recipe), method: :post) do |form| %>
+	<div class="field">
+	  <%= form.label :description %>
+	  <%= form.text_area :description %>
+	</div>
+  
+	<div class="actions">
+	  <%= form.submit 'Add Step', class: 'btn btn-primary' %>
+	</div>
+  <% end %>
+  
