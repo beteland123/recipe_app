@@ -42,9 +42,13 @@ class RecipesController < ApplicationController
   end   
 
   def toggle_public
-    @recipe.toggle!(:public)
-    redirect_to @recipe, notice: 'Recipe privacy updated.'
-  end
+	@recipe.toggle!(:public)
+	if @recipe.public
+	  redirect_to public_recipes_path, notice: 'Recipe is now public.'
+	else
+	  redirect_to @recipe, notice: 'Recipe is now private.'
+	end
+  end  
 
   def update_times
 	@recipe = Recipe.find(params[:id])
@@ -96,8 +100,8 @@ class RecipesController < ApplicationController
 	params.require(:food).permit(:name, :quantity, :unit)
   end  
 
-  def public
+  def public_recipes
 	@public_recipes = Recipe.where(public: true).order(created_at: :desc)
 	render 'public_index'
-  end  
+  end   
 end
