@@ -2,6 +2,23 @@
 
 <% if current_user == @recipe.user || @recipe.public %>
   <%= render 'recipe_details', recipe: @recipe %>
+  <% if current_user == @recipe.user %>
+    <div class="update-times-form">
+      <%= form_with model: @recipe, url: update_times_recipe_path(@recipe), method: :patch do |f| %>
+        <div class="form-group">
+          <%= f.label :preparation_time %>
+          <%= f.text_field :preparation_time, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :cooking_time %>
+          <%= f.text_field :cooking_time, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.submit "Update Times", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 <% else %>
   <p>This recipe is private.</p>
 <% end %>
@@ -10,14 +27,8 @@
   <%= link_to 'Toggle Privacy', toggle_public_recipe_path(@recipe), method: :patch %>
 <% end %>
 
-<% if current_user == @recipe.user || @recipe.public %>
-  <div class="names">
-    <p>Preparation Time: <%= @recipe.preparation_time %></p>
-    <p>Cooking Time: <%= @recipe.cooking_time %></p>
-    <p>Steps go here...</p>
-  </div>
-<% end %>
-
-<% if current_user == @recipe.user %>
-  <%= link_to 'Add New Step', new_recipe_step_path(@recipe), class: 'btn btn-primary' %>
-<% end %>
+<div class="names">
+  <p><strong>Preparation Time:</strong> <%= @recipe.preparation_time %></p>
+  <p><strong>Cooking Time:</strong> <%= @recipe.cooking_time %></p>
+  <p>Steps go here...</p>
+</div>

@@ -1,6 +1,6 @@
 class RecipesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_recipe, only: [:show, :toggle_public, :add_food, :create_food]
+  before_action :set_recipe, only: [:show, :edit, :update, :destroy, :toggle_public, :add_food, :create_food]
 
   def index
     @recipes = current_user.recipes
@@ -45,6 +45,20 @@ class RecipesController < ApplicationController
     redirect_to @recipe, notice: 'Recipe privacy updated.'
   end
 
+  def update_times
+	@recipe = Recipe.find(params[:id])
+	
+	if current_user == @recipe.user
+	  if @recipe.update(recipe_params)  # Use recipe_params here
+		redirect_to @recipe, notice: 'Preparation and cooking times updated.'
+	  else
+		render :show
+	  end
+	else
+	  redirect_to @recipe, alert: 'You are not authorized to update this recipe.'
+	end
+  end  
+  
   def add_food
     @food = Food.new
   end

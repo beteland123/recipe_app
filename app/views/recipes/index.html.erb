@@ -1,11 +1,11 @@
 <h1>My Recipes</h1>
 
 <% @recipes.each do |recipe| %>
-	<div class="recipe">
-	  <h2><%= link_to recipe.name, recipe %></h2>
-	  <h2><%= recipe.description %></h2>
-	</div>
-	<%= link_to 'Remove', recipe, method: :delete, data: { confirm: 'Are you sure?' } if current_user == recipe.user %>
-  <% end %> 
+  <div class="recipe">
+    <h2><%= link_to recipe.name, recipe_path(recipe) %></h2>
+    <p><%= recipe.description %></p>
+    <a href="<%= recipe_path(recipe) %>" data-method="delete" data-confirm="Are you sure?">Remove</a>
+  </div>
+<% end %>
 
 <%= link_to 'New Recipe', new_recipe_path %>
