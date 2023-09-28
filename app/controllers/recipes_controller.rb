@@ -83,6 +83,6 @@ class RecipesController < ApplicationController
   end  
 
   def food_params
-    # Define the permitted parameters for creating food
-  end
+	params.require(:food).permit(:name, :quantity, :unit)
+  end  
 end
