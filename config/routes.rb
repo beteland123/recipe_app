@@ -12,8 +12,7 @@ Rails.application.routes.draw do
     post 'toggle_public/:id', to: 'recipes#toggle_public', on: :member, as: :toggle_public
   end
 
-  root 'recipes#public_recipes_list'
-
+  
   devise_scope :user do
     get "/custom_sign_out" => "devise/sessions#destroy", as: :custom_destroy_user_session
   end

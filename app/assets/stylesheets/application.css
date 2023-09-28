@@ -16,7 +16,239 @@
  https://img.freepik.com/premium-photo/various-fresh-vegetables-herbs-healthy-eating-concept_51524-4701.jpg?size=626&ext=jpg&ga=GA1.1.1216120637.1695808448&semt=ais
  background-image: url('https://img.freepik.com/free-photo/top-view-fresh-vegetables-various-spices-small-bowls-wooden-spoons-table-free-space_140725-147473.jpg?size=626&ext=jpg&ga=GA1.1.1216120637.1695808448&semt=ais');
  */
+body {
+  background-image: url('https://img.freepik.com/premium-photo/cooking-ingredient-white-table-background_798854-433.jpg?size=626&ext=jpg&ga=GA1.1.1216120637.1695808448&semt=ais');
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  font: 500 0.8em "Lato", sans-serif;
+  text-align: center;
+}
 
-/* background-image: url('https://img.freepik.com/premium-photo/cooking-ingredient-white-table-background_798854-433.jpg?size=626&ext=jpg&ga=GA1.1.1216120637.1695808448&semt=ais');
-    background-repeat: no-repeat;
-    background-size: cover; */
+@import url("https://fonts.googleapis.com/css?family=Lato");
+
+/* Updated CSS for the nav */
+.sign_in_user_bar {
+  margin-top: 0; /* Add this to remove any top margin */
+  padding-top: 0; /* Add this to remove any top padding */
+  background: #2d2738;
+  opacity: 0.95;
+}
+
+.header {
+  color: #0ce222;
+  width: 100%;
+  height: 75px;
+  opacity: 0.95;
+  box-shadow: #333 1px 3px 4px;
+  overflow: hidden;
+  -webkit-box-shadow: #333 1px 3px 4px;
+  -moz-box-shadow: #333 1px 3px 4px;
+}
+
+.menu {
+  width: 70%;
+  margin: 0 auto;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+ul li {
+  margin: 0;
+  padding: 10px 0 10px 0;
+  width: 25%;
+  height: 10px;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #fffe08;
+  cursor: pointer;
+  display: inline-block;
+  letter-spacing: 0.5em;
+}
+
+li.active {
+  color: orange;
+  transform: scale(1.1);
+}
+
+a {
+  background-color: #282928;
+  color: rgb(210, 205, 205); /* Set the link color to white */
+  text-decoration: none;
+  padding: 1em;
+  border: 1px solid rgb(240 240 240 / 13%);
+  box-shadow: 0 103px 100px rgba(103, 102, 102, 0.2);
+  border-radius: 0.5rem;
+}
+
+.sign_out a {
+  color: #9dc0eb;
+  text-decoration: none;
+  border: 1px solid rgba(255, 0, 0, 0.13);
+  width: 2em;
+}
+
+@media (max-device-width: 991px) {
+  .header {
+    height: 64px;
+  }
+
+  body {
+    font-size: 0.4em;
+  }
+}
+
+.tableDiv {
+  opacity: 0.95;
+  margin: 0 auto;
+  max-width: 48rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  box-shadow: 0 103px 100px rgb(252 251 251 / 20%);
+
+  --tw-text-opacity: 1;
+
+  color: #1708ff;
+  background-color: greenyellow;
+  border-radius: 0.5rem;
+}
+
+th {
+  font-weight: bold;
+}
+
+th,
+td,
+tr {
+  padding: 1em;
+  text-align: left;
+}
+
+tbody tr:nth-child(even) {
+  background-color: rgb(211, 236, 174);
+  opacity: 0.8;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: rgb(227, 253, 188);
+  opacity: 0.8;
+}
+
+.Delete {
+  display: inline-block;
+  padding: 0.5em 0.5em;
+  box-shadow: 0 103px 100px rgb(252 251 251 / 20%);
+}
+
+.Delete button {
+  color: white;
+  background-color: #17141d;
+  opacity: 0.8;
+  border-radius: 0.5rem;
+}
+
+input[type=submit] {
+  margin-top: 12px;
+  background-color: #04aa6d;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+select,
+input,
+textarea,
+.post-button {
+  width: 100%;
+  padding: 1.5%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+form div {
+  display: flex;
+}
+
+label {
+  width: 20%;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 59rem;
+  padding: 1em;
+  color: rgb(34, 32, 32);
+  background-color: greenyellow;
+  opacity: 0.8;
+}
+
+.register {
+  background-color: #333;
+  margin: 3em auto;
+  max-width: 30rem;
+  padding: 2em;
+  opacity: 0.8;
+  color: aliceblue;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+input[type=checkbox] {
+  max-width: 4em;
+}
+
+.actions {
+  max-width: 6em;
+  display: flex;
+  align-self: flex-end;
+}
+
+.links a {
+  color: aliceblue;
+  background-color: #2d2e2d;
+  opacity: 0.8;
+  border-radius: 0.5rem;
+}
+
+.links {
+  display: flex;
+  gap: 1em;
+  padding-top: 1em;
+}
+
+.user-sign {
+  opacity: 0.8;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  float: left;
+  padding: 2em;
+  position: relative;
+}
+
+.user-sign a {
+  background-color: #2d2e2d;
+  color: aliceblue;
+  opacity: 0.8;
+}

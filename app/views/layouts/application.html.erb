@@ -8,9 +8,15 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <style>
+    nav ul li a:hover {
+        color: #ecf0f1;
+    }
+</style>
   </head>
 
   <body>
+  <%= render partial: "shared/nav" %>
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
     <%= yield %>
