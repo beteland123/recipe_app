@@ -42,12 +42,10 @@ class RecipesController < ApplicationController
   end
 
   def toggle_public
-    @recipe.toggle!(:public)
-    if @recipe.public
-      redirect_to public_recipes_path, notice: 'Recipe is now public.'
-    else
-      redirect_to @recipe, notice: 'Recipe is now private.'
-    end
+    @recipe = Recipe.find(params[:id])
+    @recipe.public = !@recipe.public
+    @recipe.save
+    redirect_to recipe_path(@recipe)
   end
 
   def update_times
@@ -64,15 +62,6 @@ class RecipesController < ApplicationController
     end
   end
 
-  def create_food
-    @food = @recipe.foods.build(food_params)
-    if @food.save
-      redirect_to @recipe, notice: 'Food was successfully added to the recipe.'
-    else
-      render :add_food
-    end
-  end
-
   private
 
   def set_recipe
@@ -81,10 +70,6 @@ class RecipesController < ApplicationController
 
   def recipe_params
     params.require(:recipe).permit(:name, :description, :preparation_time, :cooking_time, :public)
-  end
-
-  def food_params
-    params.require(:food).permit(:name, :quantity, :unit)
   end
 
   def public_recipes
