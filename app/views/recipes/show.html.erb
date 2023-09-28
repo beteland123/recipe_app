@@ -7,7 +7,7 @@
 <% end %>
 
 <% if current_user == @recipe.user %>
-  <%= link_to 'Toggle Privacy', public_recipes_recipe_path(@recipe), method: :patch %>
+<%= button_to(@recipe.public? ? "Make it Private" : "Make it Public",toggle_public_recipe_path(@recipe),method: :patch) %>
 <% end %>
 
 <div class="names">
