@@ -5,4 +5,8 @@ class Recipe < ApplicationRecord
 
   validates :name, presence: true
   validates :description, presence: true
+
+  def editing_times?
+    preparation_time.nil? && cooking_time.nil?
+  end
 end
