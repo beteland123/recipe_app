@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     member do
       patch 'toggle_public'
       get 'public_recipes'
-	  patch 'update_times'
+      patch 'update_times'
       get 'new_step', to: 'recipe_steps#new'
       post 'create_step', to: 'recipe_steps#create'
     end
