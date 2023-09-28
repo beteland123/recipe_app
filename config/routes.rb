@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   resources :recipes, except: [:update] do
     member do
       patch 'toggle_public'
-      get 'public_recipes'
+      get '/public_recipes', to: 'public_recipes#index', as: 'public_recipes'
       patch 'update_times'
       get 'new_step', to: 'recipe_steps#new'
       post 'create_step', to: 'recipe_steps#create'

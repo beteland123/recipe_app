@@ -11,8 +11,24 @@
   </head>
 
   <body>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-    <%= yield %>
-  </body>
+  <header>
+  <nav>
+	<ul>
+	  <li><%= link_to 'Public Recipes', public_recipes_path %></li>
+	</ul>
+  </nav>
+</header>
+  
+<div class="container">
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+<%= yield %>
+</div>
+
+<footer>
+<p>&copy; <%= Time.now.year %> RecipeApp. All rights reserved.</p>
+</footer>
+</body>
 </html>
+
+

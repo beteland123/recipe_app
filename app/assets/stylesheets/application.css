@@ -1,22 +1,121 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- https://www.freepik.com/free-photos-vectors/recipe-ingredients
- https://img.freepik.com/premium-photo/various-fresh-vegetables-herbs-healthy-eating-concept_51524-4701.jpg?size=626&ext=jpg&ga=GA1.1.1216120637.1695808448&semt=ais
- background-image: url('https://img.freepik.com/free-photo/top-view-fresh-vegetables-various-spices-small-bowls-wooden-spoons-table-free-space_140725-147473.jpg?size=626&ext=jpg&ga=GA1.1.1216120637.1695808448&semt=ais');
- */
+body, h1, h2, p, ul, li {
+  margin: 0;
+  padding: 0;
+}
 
-/* background-image: url('https://img.freepik.com/premium-photo/cooking-ingredient-white-table-background_798854-433.jpg?size=626&ext=jpg&ga=GA1.1.1216120637.1695808448&semt=ais');
-    background-repeat: no-repeat;
-    background-size: cover; */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f7f7f7;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 0;
+}
+
+nav ul {
+  list-style: none;
+}
+
+nav ul li {
+  display: inline;
+  margin-right: 20px;
+}
+
+nav ul li:last-child {
+  margin-right: 0;
+}
+
+.notice {
+  background-color: #4CAF50;
+  color: #fff;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.alert {
+  background-color: #f44336;
+  color: #fff;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+footer {
+  text-align: center;
+  padding: 10px 0;
+  background-color: #333;
+  color: #fff;
+  margin-top: 20px;
+}
+
+/* Style the recipes */
+.recipe {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+.recipe h2 {
+  font-size: 24px;
+}
+
+.recipe p {
+  font-size: 16px;
+}
+
+/* Style the form */
+.field {
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: bold;
+  display: block;
+}
+
+input[type="text"],
+input[type="number"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.checkbox {
+  display: inline;
+  margin-right: 10px;
+}
+
+.actions {
+  margin-top: 20px;
+}
+
+/* Style buttons */
+button,
+input[type="submit"] {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover,
+input[type="submit"]:hover {
+  background-color: #555;
+}
