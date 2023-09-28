@@ -54,19 +54,21 @@ class RecipesController < ApplicationController
     redirect_to recipe_path(@recipe)
   end
 
-  def update_times
-    @recipe = Recipe.find(params[:id])
-
-    if current_user == @recipe.user
-      if @recipe.update(recipe_params)
-        redirect_to @recipe, notice: 'Preparation and cooking times updated.'
-      else
-        render :show
-      end
-    else
-      redirect_to @recipe, alert: 'You are not authorized to update this recipe.'
-    end
-  end
+  def toggle_public
+	@recipe = Recipe.find(params[:id])
+	
+	if current_user == @recipe.user
+	  @recipe.toggle!(:public)
+	  
+	  if @recipe.public?
+		redirect_to public_recipes_path, notice: "Recipe is now public."
+	  else
+		redirect_to recipe_path(@recipe), notice: "Recipe is now private."
+	  end
+	else
+	  redirect_to recipe_path(@recipe), alert: "You are not authorized to update this recipe."
+	end
+  end  
 
   private
 

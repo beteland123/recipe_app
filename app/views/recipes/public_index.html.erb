@@ -1,10 +1,22 @@
-<h1>Public Recipes</h1>
-
 <% @public_recipes.each do |recipe| %>
-  <div class="recipe">
-    <h2><%= link_to recipe.name, recipe_path(recipe) %></h2>
-    <p>Sample Dish by <%= recipe.user.name %></p>
-    <p>Total Food Items: <%= recipe.recipe_foods.count %></p>
-    <p>Total Price: <%= calculate_total_price(recipe) %></p>
+  <div class="card mb-2">
+    <div class="card-body">
+      <div class="d-flex justify-content-between mx-4">
+        <div class="cols">
+          <h5 class="card-title"><%= link_to recipe.name, recipe_path(recipe) %></h5>
+          <small>by: <%= recipe.user.name %></small>
+        </div>
+        <div class="cols">
+          <h5 class="card-title">Total food items: <%= recipe.recipe_foods.includes(:food).count %></h5>
+          <small>
+            <% sum = 0 %>
+            <% recipe.recipe_foods.includes(:food).each do |food| %>
+              <% sum += food.quantity * food.food.price %>
+            <% end %>
+            <%= "Total price: $#{sum}" %>
+          </small>
+        </div>
+      </div>
+    </div>
   </div>
 <% end %>
