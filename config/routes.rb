@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
+  get 'public_recipes/index'
   get 'recipe_steps/new'
   get 'recipe_steps/create'
   devise_for :users
   root to: 'recipes#index'
+
+  resources :public_recipes, only: [:index]
 
   resources :users, only: [] do
     resources :recipes, only: [:index]
