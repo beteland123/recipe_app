@@ -95,4 +95,9 @@ class RecipesController < ApplicationController
   def food_params
 	params.require(:food).permit(:name, :quantity, :unit)
   end  
+
+  def public
+	@public_recipes = Recipe.where(public: true).order(created_at: :desc)
+	render 'public_index'
+  end  
 end
