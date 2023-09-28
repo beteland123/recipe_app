@@ -1,0 +1,19 @@
+<h1>General Shopping List</h1>
+
+<% if @missing_food_items.any? %>
+  <p>Amount of food to buy: <%= @total_food_items %></p>
+  <p>Total value of food need: <%= @total_price %></p>
+  <ul>
+    <% @missing_food_items.each do |item| %>
+      <li>
+        Food Name: <%= item[:food_name] %><br>
+        Quantity Needed: <%= item[:quantity_needed] %><br>
+        Price: <%= item[:price] %>
+      </li>
+    <% end %>
+  </ul>
+
+  
+<% else %>
+  <p>No missing food items.</p>
+<% end %>
