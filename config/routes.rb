@@ -9,14 +9,14 @@ Rails.application.routes.draw do
   end
 
   resources :recipes, except: [:update] do
-	member do
-	  patch 'toggle_public'
-	  patch 'public_recipes'
-	  patch 'update_times'
-	  get 'new_step', to: 'recipe_steps#new'
-	  post 'create_step', to: 'recipe_steps#create'
-	  get 'shopping_list', to: 'recipes#shopping_list'
-	  get 'add_ingredient', to: 'recipes#add_ingredient'
-	end
+    member do
+      patch 'toggle_public'
+      get 'public_recipes' # Change from patch to get
+      patch 'update_times'
+      get 'new_step', to: 'recipe_steps#new'
+      post 'create_step', to: 'recipe_steps#create'
+      get 'shopping_list', to: 'recipes#shopping_list'
+      get 'add_ingredient', to: 'recipes#add_ingredient'
+    end
   end
 end
