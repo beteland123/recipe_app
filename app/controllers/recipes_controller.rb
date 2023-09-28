@@ -4,7 +4,13 @@ class RecipesController < ApplicationController
 
   def index
     @recipes = current_user.recipes
+    #@public_recipes = Recipe.where(public: true).order(created_at: :desc)
+	@recipes = @recipes.order(created_at: :desc)
+  end
+
+  def public_recipes
     @public_recipes = Recipe.where(public: true).order(created_at: :desc)
+    render 'public_index'
   end
 
   def show
@@ -54,7 +60,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
 
     if current_user == @recipe.user
-      if @recipe.update(recipe_params) # Use recipe_params here
+      if @recipe.update(recipe_params)
         redirect_to @recipe, notice: 'Preparation and cooking times updated.'
       else
         render :show
@@ -87,8 +93,14 @@ class RecipesController < ApplicationController
     params.require(:food).permit(:name, :quantity, :unit)
   end
 
-  def public_recipes
-    @public_recipes = Recipe.where(public: true).order(created_at: :desc)
-    render 'public_index'
+  def shopping_list
+    @recipe = Recipe.find(params[:id])
+    @recipe_foods = @recipe.recipe_foods
+    # Calculate your shopping list data here (e.g., sum of quantities, etc.)
+  end
+
+  def add_ingredient
+    @recipe = Recipe.find(params[:id])
+    @food = Food.new
   end
 end
