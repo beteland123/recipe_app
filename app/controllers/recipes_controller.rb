@@ -7,16 +7,11 @@ class RecipesController < ApplicationController
     @public_recipes = Recipe.where(public: true).order(created_at: :desc)
   end
 
-  def public_recipes
-    @public_recipes = Recipe.where(public: true).order(created_at: :desc)
-    render 'public_index'
-  end
-
   def show
-	@recipe = Recipe.find(params[:id])
-	@recipe_foods = @recipe.recipe_foods
-	@user = current_user
-	@food = Food.new if current_user == @recipe.user
+    @recipe = Recipe.find(params[:id])
+    @recipe_foods = @recipe.recipe_foods
+    @user = current_user
+    @food = Food.new if current_user == @recipe.user
   end
 
   def new
@@ -49,26 +44,19 @@ class RecipesController < ApplicationController
 
   def toggle_public
     @recipe = Recipe.find(params[:id])
-    @recipe.public = !@recipe.public
-    @recipe.save
-    redirect_to recipe_path(@recipe)
-  end
 
-  def toggle_public
-	@recipe = Recipe.find(params[:id])
-	
-	if current_user == @recipe.user
-	  @recipe.toggle!(:public)
-	  
-	  if @recipe.public?
-		redirect_to public_recipes_path, notice: "Recipe is now public."
-	  else
-		redirect_to recipe_path(@recipe), notice: "Recipe is now private."
-	  end
-	else
-	  redirect_to recipe_path(@recipe), alert: "You are not authorized to update this recipe."
-	end
-  end  
+    if current_user == @recipe.user
+      @recipe.toggle!(:public)
+
+      if @recipe.public?
+        redirect_to public_recipes_path, notice: 'Recipe is now public.'
+      else
+        redirect_to recipe_path(@recipe), notice: 'Recipe is now private.'
+      end
+    else
+      redirect_to recipe_path(@recipe), alert: 'You are not authorized to update this recipe.'
+    end
+  end
 
   private
 
@@ -90,8 +78,8 @@ class RecipesController < ApplicationController
   end
 
   def add_ingredient
-	@recipe = Recipe.find(params[:id])
-	@food = Food.new
+    @recipe = Recipe.find(params[:id])
+    @food = Food.new
   end
 
   def public_recipes

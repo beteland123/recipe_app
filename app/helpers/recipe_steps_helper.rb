@@ -1,3 +1,0 @@
-module RecipeStepsHelper
-  # jghjgjj
-end
