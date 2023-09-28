@@ -4,8 +4,7 @@ class RecipesController < ApplicationController
 
   def index
     @recipes = current_user.recipes
-    #@public_recipes = Recipe.where(public: true).order(created_at: :desc)
-	@recipes = @recipes.order(created_at: :desc)
+    @public_recipes = Recipe.where(public: true).order(created_at: :desc)
   end
 
   def public_recipes
