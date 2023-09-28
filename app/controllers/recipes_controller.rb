@@ -64,19 +64,6 @@ class RecipesController < ApplicationController
     end
   end
 
-  def add_food
-    @food = Food.new
-  end
-
-  def create_food
-    @food = @recipe.foods.build(food_params)
-    if @food.save
-      redirect_to @recipe, notice: 'Food was successfully added to the recipe.'
-    else
-      render :add_food
-    end
-  end
-
   def create_food
     @food = @recipe.foods.build(food_params)
     if @food.save
