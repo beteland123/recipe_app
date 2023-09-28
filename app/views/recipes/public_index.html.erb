@@ -4,7 +4,7 @@
   <div class="recipe">
     <h2><%= link_to recipe.name, recipe_path(recipe) %></h2>
     <p>Sample Dish by <%= recipe.user.name %></p>
-    <p>Total Food Items: <%= recipe.foods.count %></p>
+    <p>Total Food Items: <%= recipe.recipe_foods.count %></p>
     <p>Total Price: <%= calculate_total_price(recipe) %></p>
   </div>
 <% end %>

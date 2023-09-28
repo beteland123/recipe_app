@@ -13,9 +13,10 @@ class RecipesController < ApplicationController
   end
 
   def show
-    @recipe = Recipe.find(params[:id])
-    @recipe_foods = @recipe.recipe_foods
-    @user = current_user
+	@recipe = Recipe.find(params[:id])
+	@recipe_foods = @recipe.recipe_foods
+	@user = current_user
+	@food = Food.new if current_user == @recipe.user
   end
 
   def new
@@ -84,7 +85,6 @@ class RecipesController < ApplicationController
   def shopping_list
     @recipe = Recipe.find(params[:id])
     @recipe_foods = @recipe.recipe_foods
-    # Calculate your shopping list data here (e.g., sum of quantities, etc.)
   end
 
   def add_ingredient
