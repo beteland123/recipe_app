@@ -15,21 +15,3 @@
   <p><%= @recipe.editing_times? ? @recipe.cooking_time : "cooking_time: #{@recipe.cooking_time} hours" %></p>
   <p>Steps go here...</p>
 </div>
-
-<div class="row">
-  <% if @recipe.user_id != @user.id  && !@recipe.public %>
-    <div class="col-md-12">
-      <h3 class="text-center">This recipe is private</h3>
-    </div>
-  <% else %>
-    <% if can? :update, @recipe %>
-      <div class="col-md-8">
-        <%= link_to 'General shopping list', shopping_list_index_path, class: 'btn btn-primary', id: "shopping-list" %>
-      </div>
-      <div class="col-md-4">
-        <%= link_to 'Add Ingredient', new_recipe_recipe_food_path(@recipe.id), class: 'btn btn-primary', id: "Ingredient" %>
-      </div>
-      <hr>
-    <% end %>
-  <% end %>
-</div>

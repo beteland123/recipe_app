@@ -77,7 +77,6 @@ class RecipesController < ApplicationController
     params.require(:recipe).permit(:name, :description, :preparation_time, :cooking_time, :public)
   end
 
-<<<<<<< HEAD
   def food_params
     params.require(:food).permit(:name, :quantity, :unit)
   end
@@ -89,12 +88,12 @@ class RecipesController < ApplicationController
   end
 
   def add_ingredient
-    @recipe = Recipe.find(params[:id])
-    @food = Food.new
-=======
+	@recipe = Recipe.find(params[:id])
+	@food = Food.new
+  end
+
   def public_recipes
     @public_recipes = Recipe.where(public: true).order(created_at: :desc)
     render 'public_index'
->>>>>>> 09eda0ac9ebd4232b6a9bf10820e7cd32b783578
   end
 end
