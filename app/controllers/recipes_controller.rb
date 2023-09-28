@@ -3,8 +3,9 @@ class RecipesController < ApplicationController
   before_action :set_recipe, only: [:show, :edit, :update, :destroy, :toggle_public, :add_food, :create_food]
 
   def index
-    @recipes = current_user.recipes
-  end
+	@recipes = current_user.recipes
+	@public_recipes = Recipe.where(public: true).order(created_at: :desc)
+  end  
 
   def show
     @recipe = Recipe.find(params[:id])
