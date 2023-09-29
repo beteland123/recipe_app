@@ -1,5 +1,5 @@
+<div class="detailsDiv">
 <h1><%= @recipe.name %></h1>
-
 <% if current_user == @recipe.user || @recipe.public %>
   <%= render 'recipe_details', recipe: @recipe %>
 <% else %>
@@ -8,7 +8,7 @@
 
 <% if current_user == @recipe.user %>
 <div class="buttons">
-<div class="buttons">
+<div class="buttons" id="is_public">
   <%= button_to(@recipe.public? ? "Make it Private" : "Make it Public", toggle_public_recipe_path(@recipe), method: :patch, class: "toggle-button #{'private' unless @recipe.public?}") %>
 </div>
 </div>
@@ -43,8 +43,8 @@
       <td>$ <%= recipe_food.quantity * recipe_food.food.price %></td>
       <td class="recipe-food-actions">
       <% if current_user == @recipe.user %>
-        <%= link_to 'Modify', edit_recipe_recipe_food_path(recipe_food) %> 
-        <%= button_to  'Remove',  recipe_recipe_food_path(recipe_food), class: "btn-delete", method: :delete, data: { confirm: 'Are you sure?' } %>
+         <%= link_to 'Modify', edit_recipe_recipe_food_path(recipe_food) %> 
+        <span class="Delete"><%= button_to  'Remove',  recipe_recipe_food_path(recipe_food), class: "btn-delete", method: :delete, data: { confirm: 'Are you sure?' } %></span>
        <% end %>
        </td>
     </td>
@@ -54,3 +54,4 @@
 </table>
 </table>
 <% end %>
+</div>

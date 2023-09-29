@@ -338,6 +338,34 @@ background-color: rgb(109 111 107);
 .field {
   margin-bottom: 20px;
 }
+#is_public{
+  max-width: 7em;
+  background-color: #2d2e2d;
+  color: white;
+}
+#is_public button{
+  background-color: #2d2e2d;
+  color: white;
+}
+#is_public button:hover{
+  background-color: rgb(231, 103, 103);
+}
+.detailsDiv{
+  flex-direction: column;
+   display: flex;
+   margin: 0 auto;
+   max-width: 59rem;
+   padding: 1em;
+   color: rgb(34, 32, 32);
+   background-color: greenyellow;
+   opacity: 0.8;
+}
+.recipe-food-actions a, .recipe-food-actions button{
+  display: inline-block;
+    padding: 1em;
+    box-shadow: 0 103px 100px rgb(252 251 251 / 20%);
+}
+        
 
 /* label {
   font-weight: bold;
@@ -411,20 +439,6 @@ input[type="submit"]:hover {
   justify-content: space-between;
   flex-direction: column;
 }
-
-.time,
-.steps {
-  gap: 30px;
-  flex-basis: 30%;
-  margin: 0;
-  padding: 10px;
-  font-size: 30px;
-}
-
-.time {
-  margin-right: 20px;
-}
-
 .btn {
   display: inline-block;
   margin-right: 10px;
