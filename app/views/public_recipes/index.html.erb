@@ -7,14 +7,20 @@
           <small>by: <%= recipe.user.name %></small>
         </div>
         <div class="cols">
-          <h5 class="card-title">Total food items: <%= recipe.recipe_foods.includes(:food).count %></h5>
-          <small>
-            <% sum = 0 %>
-            <% recipe.recipe_foods.includes(:food).each do |food| %>
-              <% sum += food.quantity * food.food.price %>
-            <% end %>
-            <%= "Total price: $#{sum}" %>
-          </small>
+          <div class="item-info">
+            <h5 class="card-title">Total food items:</h5>
+            <small><%= recipe.recipe_foods.includes(:food).count %></small>
+          </div>
+          <div class="item-info">
+            <h5 class="card-title">Total price:</h5>
+            <small>
+              <% sum = 0 %>
+              <% recipe.recipe_foods.includes(:food).each do |food| %>
+                <% sum += food.quantity * food.food.price %>
+              <% end %>
+              $<%= sum %>
+            </small>
+          </div>
         </div>
       </div>
     </div>

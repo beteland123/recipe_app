@@ -189,3 +189,40 @@ input[type="submit"]:hover {
 .btn:hover {
   background-color: #555;
 }
+
+.card {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.d-flex {
+  display: flex;
+  align-items: center;
+}
+
+.cols {
+  flex: 1;
+}
+
+.item-info {
+  display: flex;
+}
+
+.card-title {
+  font-size: 1.5rem;
+}
+
+small {
+  color: black;
+  display: flex;
+  align-items: center;
+}
+
+.count-value {
+  color: #333;
+  margin-left: 5px;
+}
