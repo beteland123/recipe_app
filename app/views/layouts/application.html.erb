@@ -8,16 +8,15 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <style>
+    nav ul li a:hover {
+        color: #ecf0f1;
+    }
+</style>
   </head>
 
   <body>
-  <header>
-  <nav>
-	<ul>
-	  <li><%= link_to 'Public Recipes', public_recipes_path %></li>
-	</ul>
-  </nav>
-</header>
+   <%= render partial: "shared/nav" %>
   
 <div class="container">
 <p class="notice"><%= notice %></p>
