@@ -1,3 +1,4 @@
+<div class="cont">
 <%= form_for(@recipe) do |f| %>
   <% if @recipe.errors.any? %>
     <div id="error_explanation">
@@ -37,3 +38,4 @@
     <%= f.submit 'Save' %>
   </div>
 <% end %>
+</div>
