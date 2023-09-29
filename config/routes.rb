@@ -3,7 +3,10 @@ Rails.application.routes.draw do
   get 'recipe_steps/new'
   get 'recipe_steps/create'
   devise_for :users
-  root to: 'recipes#index'
+
+  devise_scope :user do
+    get "/custom_sign_out" => "devise/sessions#destroy", as: :custom_destroy_user_session
+  end
 
   resources :public_recipes, only: [:index]
 
@@ -17,8 +20,12 @@ Rails.application.routes.draw do
       patch 'update_times'
       get 'new_step', to: 'recipe_steps#new'
       post 'create_step', to: 'recipe_steps#create'
-      get 'shopping_list', to: 'recipes#shopping_list'
-      get 'add_ingredient', to: 'recipes#add_ingredient'
     end
+
+    resources :recipe_foods, only: [:new, :create, :destroy, :edit, :update]
   end
+
+  root to: 'recipes#index'
+  resources :foods, only: [:index, :new, :create, :destroy]
+  get '/general_shopping_list', to: 'foods#general_shopping_list', as: 'general_shopping_list'
 end
