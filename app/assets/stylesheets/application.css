@@ -219,10 +219,12 @@ input[type="submit"]:hover {
 small {
   color: black;
   display: flex;
+  font-size: 18px;
+  margin-left: 10px;
   align-items: center;
 }
 
 .count-value {
   color: #333;
-  margin-left: 5px;
+  margin-left: 10px;
 }
