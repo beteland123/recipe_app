@@ -323,11 +323,12 @@ footer {
   gap: 1em;
 }
 .recipe_name a{
-  color: #fffdfd;
+  font-size: larger;
+  color: #ef005c;
   padding: 0;
- border-radius: 0%;
-padding: 0.5em;
-background-color: rgb(109 111 107);
+  border-radius: 0%;
+  padding: 0.5em;
+  background-color: rgb(237 242 231);
 }
 .Delete button {
   color: white;
