@@ -13,9 +13,9 @@
 <% end %>
 
 <div class="names">
-  <p><strong><%= @recipe.editing_times? ? @recipe.preparation_time : "preparation_time: #{@recipe.preparation_time} hours" %></p>
-  <p><%= @recipe.editing_times? ? @recipe.cooking_time : "cooking_time: #{@recipe.cooking_time} hours" %></p>
-  <p>Steps go here...</p>
+  <p class="time"><strong><%= @recipe.editing_times? ? @recipe.preparation_time : "preparation_time: #{@recipe.preparation_time} hours" %></p>
+  <p class="time"><%= @recipe.editing_times? ? @recipe.cooking_time : "cooking_time: #{@recipe.cooking_time} hours" %></p>
+  <p class="steps">Steps go here...</p>
 </div>
 
 <%= link_to 'Generate Shopping List', shopping_list_recipe_path(@recipe), class: 'btn btn-primary' %>

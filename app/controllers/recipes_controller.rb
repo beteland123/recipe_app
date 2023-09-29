@@ -48,27 +48,22 @@ class RecipesController < ApplicationController
   end
 
   def toggle_public
-    @recipe = Recipe.find(params[:id])
-    @recipe.public = !@recipe.public
-    @recipe.save
-    redirect_to recipe_path(@recipe)
-  end
-
-  def toggle_public
 	@recipe = Recipe.find(params[:id])
 	
 	if current_user == @recipe.user
 	  @recipe.toggle!(:public)
 	  
 	  if @recipe.public?
-		redirect_to public_recipes_path, notice: "Recipe is now public."
+		notice_message = "Recipe is now public."
 	  else
-		redirect_to recipe_path(@recipe), notice: "Recipe is now private."
+		notice_message = "Recipe is now private."
 	  end
 	else
-	  redirect_to recipe_path(@recipe), alert: "You are not authorized to update this recipe."
+	  notice_message = "You are not authorized to update this recipe."
 	end
-  end  
+	
+	redirect_to recipe_path(@recipe), notice: notice_message
+  end	
 
   private
 

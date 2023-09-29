@@ -17,6 +17,11 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+h1 {
+  text-align: center;
+  margin-top: 20px;
+}
+
 header {
   background-color: #333;
   color: #fff;
@@ -60,7 +65,6 @@ footer {
   margin-top: 20px;
 }
 
-/* Style the recipes */
 .recipe {
   border: 1px solid #ccc;
   padding: 10px;
@@ -73,10 +77,10 @@ footer {
 }
 
 .recipe p {
-  font-size: 16px;
+  font-size: 20px;
+  margin-left: 200px;
 }
 
-/* Style the form */
 .field {
   margin-bottom: 20px;
 }
@@ -104,7 +108,6 @@ textarea {
   margin-top: 20px;
 }
 
-/* Style buttons */
 button,
 input[type="submit"] {
   background-color: #333;
@@ -117,5 +120,48 @@ input[type="submit"] {
 
 button:hover,
 input[type="submit"]:hover {
+  background-color: #555;
+}
+
+.buttons {
+  text-align: right;
+  margin-top: 20px;
+}
+
+.names {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.time,
+.steps {
+  gap: 30px;
+  flex-basis: 30%;
+  margin: 0;
+  padding: 10px;
+  font-size: 30px;
+}
+
+.time {
+  margin-right: 20px;
+}
+
+.btn {
+  display: inline-block;
+  margin-right: 10px;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.btn-primary {
+  background-color: #007bff;
+}
+
+.btn:hover {
   background-color: #555;
 }
