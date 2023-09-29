@@ -492,11 +492,9 @@ input[type="submit"]:hover {
 .item-info {
   display: flex;
 }
-
-.card-title {
-  font-size: 1.5rem;
+#recipe_id{
+ justify-content:space-around;
 }
-
 small {
   color: black;
   display: flex;
