@@ -1,4 +1,9 @@
-body, h1, h2, p, ul, li {
+body, 
+h1,
+h2,
+p,
+ul,
+li {
   margin: 0;
   padding: 0;
 }
@@ -42,7 +47,7 @@ nav ul li:last-child {
 }
 
 .notice {
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: #fff;
   padding: 10px;
   margin-bottom: 10px;
