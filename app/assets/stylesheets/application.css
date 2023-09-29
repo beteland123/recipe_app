@@ -350,11 +350,12 @@ footer {
 .field {
   margin-bottom: 20px;
 }
-#is_public{
-  max-width: 7em;
-  background-color: #2d2e2d;
+#is_public {
+  justify-content: flex-end;
+  display: flex;
   color: white;
 }
+
 #is_public button{
   background-color: #2d2e2d;
   color: white;
