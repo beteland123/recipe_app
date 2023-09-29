@@ -7,9 +7,11 @@
 <% end %>
 
 <% if current_user == @recipe.user %>
-  <div class="buttons">
-  <%= button_to(@recipe.public? ? "Make it Private" : "Make it Public", toggle_public_recipe_path(@recipe), method: :patch) %>
-  </div>
+<div class="buttons">
+<div class="buttons">
+  <%= button_to(@recipe.public? ? "Make it Private" : "Make it Public", toggle_public_recipe_path(@recipe), method: :patch, class: "toggle-button #{'private' unless @recipe.public?}") %>
+</div>
+</div>
 <% end %>
 
 <div class="names">

@@ -63,7 +63,7 @@ class RecipesController < ApplicationController
 	end
 	
 	redirect_to recipe_path(@recipe), notice: notice_message
-  end	
+  end  
 
   private
 
