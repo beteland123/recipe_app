@@ -1,12 +1,16 @@
-<h1>My Recipes</h1>
 
+<h1>My Recipes</h1>
+<div class="recipeDiv">
 <% @recipes.each do |recipe| %>
   <div class="recipe">
-    <h2><%= link_to recipe.name, recipe_path(recipe) %></h2>
+  <div>
+    <p class="recipe_name"><%= link_to recipe.name, recipe_path(recipe) %></p>
+    <span class="Delete"><%= button_to "Remove", recipe_path(recipe.id), method: :delete, data: { confirm: "Are you sure?" } %></span>
+    </div>
     <p><%= recipe.description %></p>
-    <%= button_to "Remove", recipe_path(recipe.id), method: :delete, data: { confirm: "Are you sure?" } %>
   </div>
 <% end %>
 
 <%= link_to 'New Recipe', new_recipe_path, class: 'new-recipe-link' %>
+</div>
 

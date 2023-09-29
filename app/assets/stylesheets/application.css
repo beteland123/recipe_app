@@ -296,22 +296,45 @@ footer {
   margin-top: 20px;
 }
 
-.recipe {
-  border: 1px solid #ccc;
-  padding: 10px;
-  margin-bottom: 20px;
-  border-radius: 5px;
+.recipeDiv {
+  flex-direction: column;
+  display: flex;
+  margin: 0 auto;
+  max-width: 59rem;
+  padding: 1em;
+  color: rgb(34, 32, 32);
+  background-color: greenyellow;
+  opacity: 0.8;
+  gap: 5em;
 }
-
-.recipe h2 {
-  font-size: 24px;
+.recipe{
+  display: flex;
+  background-color: rgb(109 111 107);
+  opacity: 0.8;
+  color: #fcfcfc;
+  font-size: medium;
 }
-
-.recipe p {
-  font-size: 20px;
-  margin-left: 200px;
+.recipe p{
+  width: 85%;
 }
-
+.recipe div{
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+.recipe_name a{
+  color: #fffdfd;
+  padding: 0;
+ border-radius: 0%;
+padding: 0.5em;
+background-color: rgb(109 111 107);
+}
+.Delete button {
+  color: white;
+  background-color: #17141d;
+  opacity: 0.8;
+  border-radius: 0.5rem;
+}
 .field {
   margin-bottom: 20px;
 }
