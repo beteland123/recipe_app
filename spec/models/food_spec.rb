@@ -5,6 +5,7 @@ require 'shoulda/matchers'
 RSpec.describe Food, type: :model do
   let(:user) { User.create(name: 'John Doe') }
   let(:food) { Food.create(user: user, measurement_unit: 'gram', price: 1.2, quantity: 1) }
+
   describe 'associations' do
     it 'belongs to user' do
       expect(food.user).to eq(user)
@@ -17,6 +18,7 @@ RSpec.describe Food, type: :model do
       expect(Food.reflect_on_association(:recipes).through_reflection.name).to eq(:recipe_foods)
     end
   end
+  describe 'validation' do
   it 'name should be present' do
     food.name = nil
     expect(food).not_to be_valid
@@ -39,5 +41,5 @@ RSpec.describe Food, type: :model do
     expect(food).not_to be_valid
   end
 
-
+end
 end
