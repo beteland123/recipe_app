@@ -15,10 +15,12 @@
             <h5 class="card-title">Total price:</h5>
             <small>
               <% sum = 0 %>
-              <% recipe.recipe_foods.includes(:food).each do |food| %>
-                <% sum += food.quantity * food.food.price %>
+              <% recipe.recipe_foods.includes(:food).each do |recipe_food| %>
+                <% food = recipe_food.food %>
+                <% food_price = food.price * recipe_food.quantity %>
+                <% sum += food_price %>
+                <%= "$#{food_price}" %><br>
               <% end %>
-              $<%= sum %>
             </small>
           </div>
         </div>

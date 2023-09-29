@@ -8,11 +8,11 @@ class RecipesController < ApplicationController
   end
 
   def show
-    @recipe = Recipe.find(params[:id])
-    @recipe_foods = @recipe.recipe_foods
-    @user = current_user
-    @food = Food.new if current_user == @recipe.user
-  end
+	@recipe = Recipe.includes(recipe_foods: :food).find(params[:id])
+	@recipe_foods = @recipe.recipe_foods
+	@user = current_user
+	@food = Food.new if current_user == @recipe.user
+  end  
 
   def new
     @recipe = Recipe.new
