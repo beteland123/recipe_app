@@ -322,6 +322,17 @@ footer {
   flex-direction: column;
   gap: 1em;
 }
+.total_info{
+  display: flex;
+  gap: 1em;
+  justify-content: center;
+}
+#shopping{
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  font-size: medium;
+}
 .recipe_name a{
   font-size: larger;
   color: #ef005c;
