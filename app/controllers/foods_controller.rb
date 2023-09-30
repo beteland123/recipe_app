@@ -32,8 +32,8 @@ class FoodsController < ApplicationController
     @recipes = Recipe.where(user: current_user)
     @general_food_list = Food.where(user: current_user)
     @missing_food_items = []
-    total_food_items = 0
-    total_price = 0
+    quantity_needed = 0
+    price = 0
 
     @recipes.each do |recipe|
       recipe.recipe_foods.each do |recipe_food|
@@ -41,18 +41,19 @@ class FoodsController < ApplicationController
 
         next unless general_food.nil? || general_food.quantity < recipe_food.quantity
 
+        quantity_needed = recipe_food.quantity - general_food.quantity
+        price = recipe_food.food.price * quantity_needed
+
         @missing_food_items << {
           food_name: recipe_food.food.name,
-          quantity_needed: recipe_food.quantity,
-          price: recipe_food.food.price
+          quantity_needed:,
+          price:
         }
-        total_food_items += recipe_food.quantity
-        total_price += (recipe_food.food.price * recipe_food.quantity)
       end
     end
 
-    @total_food_items = total_food_items
-    @total_price = total_price
+    @total_food_items = @missing_food_items.sum { |item| item[:quantity_needed] }
+    @total_price = @missing_food_items.sum { |item| item[:price] }
   end
 
   private

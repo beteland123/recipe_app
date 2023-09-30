@@ -1,17 +1,6 @@
-<h2>Food index page</h2>
-<div class='sign_in_user_bar'>
-      <% unless user_signed_in? %>
-        <div class="user-sign-in-link">
-          <%= link_to 'Sign in', new_user_session_path, method: :delete %>
-        </div>
-      <% end %>
-      <% if user_signed_in? %>
-        <div class="user-sign-in-link">
-          <%= link_to 'Sign out', custom_destroy_user_session_path, method: :delete %>
-        </div>
-      <% end %>
-</div>
-<%= link_to 'Add Food', 'foods/new', class: "add-button"%>
+<h2>Avaliable food</h2>
+<div class="tableDiv">
+<div id="is_public"><%= link_to 'Add Food', 'foods/new', class: "add-button"%></div>
 <% if @foods.any? %>
 <table>
   <thead>
@@ -23,16 +12,17 @@
     </tr>
   </thead>
   <tbody>
+  <% @foods.each do |food| %>
     <tr>
-    <% @foods.each do |food| %>
       <td><%= food.name %></td>
       <td><%= food.measurement_unit %></td>
-      <td><%= food.price %></td>
-      <td><%= button_to "Delete Food", food_path(food), method: :delete, data: { confirm: "Are you sure?" } %></td>
-    <% end %>
+      <td>$<%= food.price %></td>
+      <td class="Delete"><%= button_to "Delete Food", food_path(food), method: :delete, data: { confirm: "Are you sure?" } %></td>
     </tr>
+  <% end %>
   </tbody>
 </table>
+</div>
 <% else %>
    <p>There is no food you have.</p>
 <% end %>
