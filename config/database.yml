@@ -94,4 +94,3 @@ production:
   password: gardy
   port: 5433
   localhost: localhost
-  
