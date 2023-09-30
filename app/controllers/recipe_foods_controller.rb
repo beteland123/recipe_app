@@ -1,5 +1,5 @@
 class RecipeFoodsController < ApplicationController
-  before_action :set_food_recipe, except: [:edit, :destroy]
+  before_action :set_food_recipe, except: %i[edit destroy]
   def new
     @recipe_food = RecipeFood.new
   end
@@ -15,19 +15,19 @@ class RecipeFoodsController < ApplicationController
       render 'new'
     end
   end
-  
 
   def edit
     @recipe_food = RecipeFood.find(params[:recipe_id])
     @recipe = @recipe_food.recipe
 
-  if @recipe_food
-    # The record was found, proceed with rendering the edit view
-  else
-    flash[:alert] = 'Recipe food not found'
-    redirect_to recipe_path(@recipe.id)
+    if @recipe_food
+      # The record was found, proceed with rendering the edit view
+    else
+      flash[:alert] = 'Recipe food not found'
+      redirect_to recipe_path(@recipe.id)
+    end
   end
-  end
+
   def update
     @recipe_food = RecipeFood.find(params[:id])
     if @recipe_food.update(update_food_params)
@@ -38,9 +38,8 @@ class RecipeFoodsController < ApplicationController
     end
   end
 
-
   def destroy
-    puts "youu"
+    puts 'youu'
     @recipe_food = RecipeFood.find(params[:recipe_id])
     @recipe = @recipe_food.recipe
 
@@ -63,9 +62,8 @@ class RecipeFoodsController < ApplicationController
   def recipe_food_params
     params.require(:recipe_food).permit(:quantity, :food_id, :recipe_id)
   end
+
   def update_food_params
     params.require(:recipe_food).permit(:quantity)
   end
 end
-
-
