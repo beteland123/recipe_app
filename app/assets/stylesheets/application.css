@@ -18,10 +18,11 @@ body {
   font: 500 0.8em "Lato", sans-serif;
   text-align: center;
 }
+
 /* Updated CSS for the nav */
 .sign_in_user_bar {
-  margin-top: 0; /* Add this to remove any top margin */
-  padding-top: 0; /* Add this to remove any top padding */
+  margin-top: 0;
+  padding-top: 0;
   background: #2d2738;
   opacity: 0.95;
 }
@@ -41,6 +42,7 @@ body {
   width: 70%;
   margin: 0 auto;
 }
+
 ul li {
   margin: 0;
   padding: 10px 0 10px 0;
@@ -59,6 +61,7 @@ li.active {
   color: orange;
   transform: scale(1.1);
 }
+
 a {
   background-color: #282928;
   color: rgb(210, 205, 205); /* Set the link color to white */
@@ -172,6 +175,7 @@ form div {
 label {
   width: 20%;
 }
+
 .cont {
   margin: 0 auto;
   max-width: 59rem;
@@ -180,6 +184,7 @@ label {
   background-color: greenyellow;
   opacity: 0.8;
 }
+
 .register {
   background-color: #333;
   margin: 3em auto;
@@ -211,6 +216,7 @@ input[type=checkbox] {
   opacity: 0.8;
   border-radius: 0.5rem;
 }
+
 .links {
   display: flex;
   gap: 1em;
@@ -232,39 +238,11 @@ input[type=checkbox] {
   opacity: 0.8;
 }
 
-
-/* .container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-} */
-
-/* h1 {
-  text-align: center;
-  margin-top: 20px;
-} */
-
 header {
   background-color: #333;
   color: #fff;
   padding: 10px 0;
 }
-
-/* nav ul {
-  list-style: none;
-}
-
-nav ul li {
-  display: inline;
-  margin-right: 20px;
-}
-
-nav ul li:last-child {
-  margin-right: 0;
-} */
 
 .notice {
   background-color: #4caf50;
@@ -274,7 +252,7 @@ nav ul li:last-child {
   max-width: 8em;
   position: fixed;
   bottom: 0;
-  right: 2.5em; 
+  right: 2.5em;
 }
 
 .alert {
@@ -285,7 +263,7 @@ nav ul li:last-child {
   max-width: 8em;
   position: fixed;
   bottom: 0;
-  right: 1em; 
+  right: 1em;
 }
 
 footer {
@@ -307,121 +285,82 @@ footer {
   opacity: 0.8;
   gap: 5em;
 }
-.recipe{
+
+.recipe {
   display: flex;
   background-color: rgb(109 111 107);
   opacity: 0.8;
   color: #fcfcfc;
   font-size: medium;
 }
-.recipe p{
+
+.recipe p {
   width: 85%;
 }
-.recipe div{
+
+.recipe div {
   display: flex;
   flex-direction: column;
   gap: 1em;
 }
-.total_info{
+
+.total_info {
   display: flex;
   gap: 1em;
   justify-content: center;
 }
-#shopping{
+
+#shopping {
   display: flex;
   flex-direction: column;
   gap: 1em;
   font-size: medium;
 }
-.recipe_name a{
+
+.recipe_name a {
   font-size: larger;
   color: #ef005c;
-  padding: 0;
   border-radius: 0%;
   padding: 0.5em;
   background-color: rgb(237 242 231);
 }
-.Delete button {
-  color: white;
-  background-color: #17141d;
-  opacity: 0.8;
-  border-radius: 0.5rem;
-}
+
 .field {
   margin-bottom: 20px;
 }
+
 #is_public {
   justify-content: flex-end;
   display: flex;
   color: white;
 }
 
-#is_public button{
+.recipe-food-actions a,
+.recipe-food-actions button {
+  display: inline-block;
+  padding: 1em;
+  box-shadow: 0 103px 100px rgb(252 251 251 / 20%);
+}
+
+#is_public button {
   background-color: #2d2e2d;
   color: white;
 }
-#is_public button:hover{
+
+#is_public button:hover {
   background-color: rgb(231, 103, 103);
 }
-.detailsDiv{
+
+.detailsDiv {
   flex-direction: column;
-   display: flex;
-   margin: 0 auto;
-   max-width: 59rem;
-   padding: 1em;
-   color: rgb(34, 32, 32);
-   background-color: greenyellow;
-   opacity: 0.8;
+  display: flex;
+  margin: 0 auto;
+  max-width: 59rem;
+  padding: 1em;
+  color: rgb(34, 32, 32);
+  background-color: greenyellow;
+  opacity: 0.8;
 }
-.recipe-food-actions a, .recipe-food-actions button{
-  display: inline-block;
-    padding: 1em;
-    box-shadow: 0 103px 100px rgb(252 251 251 / 20%);
-}
-        
-
-/* label {
-  font-weight: bold;
-  display: block;
-} */
-
-/* input[type="text"],
-input[type="number"],
-textarea {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-} */
-
-/* .checkbox {
-  display: inline;
-  margin-right: 10px;
-}
-
-.actions {
-  margin-top: 20px;
-} */
-
-/* button,
-input[type="submit"] {
-  background-color: #333;
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-button:hover,
-input[type="submit"]:hover {
-  background-color: #555; */
-/* }
-
-.buttons {
-  text-align: right;
-  margin-top: 20px;
-} */
 
 .toggle-button {
   padding: 10px 20px;
@@ -452,6 +391,7 @@ input[type="submit"]:hover {
   justify-content: space-between;
   flex-direction: column;
 }
+
 .btn {
   display: inline-block;
   margin-right: 10px;
@@ -492,9 +432,11 @@ input[type="submit"]:hover {
 .item-info {
   display: flex;
 }
-#recipe_id{
- justify-content:space-around;
+
+#recipe_id {
+  justify-content: space-around;
 }
+
 small {
   color: black;
   display: flex;
