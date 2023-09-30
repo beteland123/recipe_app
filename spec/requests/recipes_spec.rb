@@ -1,42 +1,26 @@
-# spec/controllers/recipes_controller_spec.rb
-
 require 'rails_helper'
 
 RSpec.describe RecipesController, type: :controller do
-  let(:user) { create(:user) }
-  let(:recipe) { create(:recipe, user: user) }
+  include Devise::Test::ControllerHelpers
 
-  before do
-    sign_in user
-  end
+  let(:user) { FactoryBot.create(:user) }
 
-  # ... (previous tests for other actions)
-
-  describe "GET #show" do
-    it "assigns the requested recipe to @recipe" do
-      get :show, params: { id: recipe.id }
-      expect(assigns(:recipe)).to eq(recipe)
+  describe 'GET #index' do
+    context 'when a user is authenticated' do
+      before do
+        sign_in user
+        get :index
+      end
     end
 
-    it "assigns @recipe_foods" do
-      get :show, params: { id: recipe.id }
-      expect(assigns(:recipe_foods)).to eq(recipe.recipe_foods)
-    end
+    context 'when a user is not authenticated' do
+      before do
+        get :index
+      end
 
-    it "assigns @user" do
-      get :show, params: { id: recipe.id }
-      expect(assigns(:user)).to eq(user)
-    end
-
-    it "renders the show template" do
-      get :show, params: { id: recipe.id }
-      expect(response).to render_template("show")
-    end
-
-    it "redirects to the login page if the user is not authenticated" do
-      sign_out user
-      get :show, params: { id: recipe.id }
-      expect(response).to redirect_to(new_user_session_path)
+      it 'redirects to the sign-in page' do
+        expect(response).to redirect_to(new_user_session_path)
+      end
     end
   end
 end

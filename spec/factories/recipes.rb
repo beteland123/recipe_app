@@ -1,8 +1,7 @@
 FactoryBot.define do
   factory :recipe do
-    name { Faker::Food.dish }
-    description { Faker::Lorem.sentence }
+    name { "Delicious Recipe" }
+    description { "This is a tasty recipe." }
     user
-    # Add any other recipe attributes you need
   end
 end
