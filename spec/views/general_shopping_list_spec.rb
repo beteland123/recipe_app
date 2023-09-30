@@ -1,5 +1,3 @@
-# spec/features/general_shopping_list_spec.rb
-
 require 'rails_helper'
 
 RSpec.feature 'General Shopping List', type: :feature do
