@@ -64,7 +64,7 @@ li.active {
 
 a {
   background-color: #282928;
-  color: rgb(210, 205, 205); /* Set the link color to white */
+  color: rgb(210, 205, 205);
   text-decoration: none;
   padding: 1em;
   border: 1px solid rgb(240 240 240 / 13%);
