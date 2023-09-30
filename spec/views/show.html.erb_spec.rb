@@ -1,51 +1,28 @@
-#require 'rails_helper'
+require 'rails_helper'
 
-#RSpec.describe "recipes/show", type: :view do
-#  let(:user) { create(:user) }
-#  let(:recipe) { create(:recipe, user: user) }
+RSpec.describe "recipes/show", type: :view do
+	let(:user) { FactoryBot.build(:user) }
+    let(:recipe) { FactoryBot.create(:recipe, user: user) }
 
-#  before do
-#    assign(:recipe, recipe)
-#    assign(:recipe_foods, [])
-#    assign(:user, user)
-#  end
+  before do
+    assign(:recipe, recipe)
+    allow(view).to receive(:current_user).and_return(user)
+    render
+  end
 
-#  context "when the recipe is public" do
-#    before do
-#      recipe.update(public: true)
-#    end
+  it "displays recipe details" do
+    expect(rendered).to match(/#{recipe.name}/)
+    expect(rendered).to match(/#{recipe.preparation_time}/)
+    expect(rendered).to match(/#{recipe.cooking_time}/)
+  end
 
-#    it "displays the recipe name" do
-#      render
-#      expect(rendered).to have_selector("h1", text: recipe.name)
-#    end
+  it "displays buttons for authorized user" do
+    expect(rendered).to have_link("Generate shopping list", href: general_shopping_list_path)
+    expect(rendered).to have_link("Add ingredient", href: new_recipe_recipe_food_path(recipe))
+  end
 
-#    it "displays the recipe details" do
-#      render
-#      expect(rendered).to render_template(partial: "_recipe_details")
-#    end
-
-#    it "displays the 'Make it Private' button for the recipe owner" do
-#      render
-#      expect(rendered).to have_selector("button", text: "Make it Private")
-#    end
-#  end
-
-#  context "when the recipe is private" do
-#    before do
-#      recipe.update(public: false)
-#    end
-
-#    it "displays a message that the recipe is private" do
-#      render
-#      expect(rendered).to have_selector("p", text: "This recipe is private.")
-#    end
-
-#    it "does not display the 'Make it Private' button" do
-#      render
-#      expect(rendered).not_to have_selector("button", text: "Make it Private")
-#    end
-#  end
-
-#  # Add more tests for other elements in the view, such as preparation time, cooking time, etc.
-#end
+  it "displays make public/private button for recipe owner" do
+    expect(rendered).to have_button("Make it Private") if recipe.public?
+    expect(rendered).to have_button("Make it Public") unless recipe.public?
+  end
+end
