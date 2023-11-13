@@ -24,9 +24,7 @@ default: &default
 development:
   <<: *default
   database: recipe
-  username: postgres
-  password: gardy
-  port: 5433
+  port: 5432
   localhost: localhost
 
   # The specified database role being used to connect to postgres.
@@ -62,9 +60,7 @@ development:
 test:
   <<: *default
   database: recipe
-  username: postgres
-  password: gardy
-  port: 5433
+  port: 5432
   localhost: localhost
 
 # As with config/credentials.yml, you never want to store sensitive information,
@@ -89,8 +85,7 @@ test:
 #
 production:
   <<: *default
-  database: recipe
-  username: postgres
-  password: gardy
-  port: 5433
-  localhost: localhost
+  database: rfkeoetcs
+  username: fkeoetcs
+  password: aq_HZbnhhRvTixFN5X-eS2sGhiZl9ye3
+  url: postgres://fkeoetcs:aq_HZbnhhRvTixFN5X-eS2sGhiZl9ye3@flora.db.elephantsql.com/fkeoetcs
