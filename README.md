@@ -2,7 +2,7 @@
 
 # <a name="about-project"> Recipe App </a>
 
-Introducing the Recipe App: Your all-in-one solution for effortless cooking! Seamlessly organize your recipes, ingredients, and pantry items. Craft delicious recipes with ease, generate smart shopping lists, and even share your culinary creations with the world. Cooking has never been this convenient – simplify your kitchen adventures with our Recipe app!
+ The Recipe App: Your all-in-one solution for effortless cooking! Seamlessly organize your recipes, ingredients, and pantry items. Craft delicious recipes with ease, generate smart shopping lists, and even share your culinary creations with the world. Cooking has never been this convenient – simplify your kitchen adventures with our Recipe app!
 
 <!-- TABLE OF CONTENTS -->
 
